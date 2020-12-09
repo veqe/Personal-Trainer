@@ -1,5 +1,4 @@
 import './App.css';
-import Carlist from './Components/CarList';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,11 +10,11 @@ function App() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6">
-            CarShop Veqe
+            Personal Trainer
           </Typography>
         </Toolbar>
       </AppBar>
-      <Carlist />
+      testaa      
     </div>
   );
 }
