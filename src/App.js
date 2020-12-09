@@ -1,4 +1,5 @@
 import './App.css';
+import CustomerList from './Components/CustomerList'
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,7 +15,7 @@ function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      testaa      
+      <CustomerList />
     </div>
   );
 }
