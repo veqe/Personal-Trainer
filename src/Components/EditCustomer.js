@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-function AddCustomer(props) {
+function EditCustomer(props) {
     const [open, setOpen] = React.useState(false);
     const [customer, setCustomer] = useState({
         firstname: '', 
@@ -15,10 +15,19 @@ function AddCustomer(props) {
         phone: '',
         streetaddress: '', 
         postcode: '', 
-        city: '', 
+        city: ''
     });
 
     const handleClickOpen = () => {
+        setCustomer({
+            firstname: props.params.data.firstname,
+            lastname: props.params.data.lastname,
+            streetaddress: props.params.data.streetaddress,
+            postcode: props.params.data.postcode,
+            city: props.params.data.city,
+            email: props.params.data.email,
+            phone: props.params.data.phone
+        })
         setOpen(true);
     };
 
@@ -26,8 +35,8 @@ function AddCustomer(props) {
         setOpen(false);
     };
 
-    const handleSave = () => {
-        props.addCustomer(customer);
+    const handleSave = () => {   
+        props.updateCustomer(props.params.data.links[1].href , customer);     
         handleClose();
     }
 
@@ -37,11 +46,11 @@ function AddCustomer(props) {
 
     return(
         <div>
-            <Button style={{ margin: 10 }} variant="outlined" color="primary" onClick={handleClickOpen}>
-                Add Customer
+            <Button size="small" color="primary" onClick={handleClickOpen}>
+                Edit
             </Button>
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>New Customer</DialogTitle>
+                <DialogTitle>Update Customer</DialogTitle>
                 <DialogContent>            
                     <TextField
                         margin="dense"
@@ -113,4 +122,4 @@ function AddCustomer(props) {
     )
 }
 
-export default AddCustomer;
+export default EditCustomer;
