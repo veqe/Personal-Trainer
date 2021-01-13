@@ -1,21 +1,47 @@
 import './App.css';
-import CustomerList from './Components/CustomerList'
+import CustomerList from './Components/CustomerList';
+import TrainingList from './Components/TrainingList';
+import Drawer from './Components/Drawer';
+import { makeStyles } from '@material-ui/core/styles';
+import { BrowserRouter as Router, Redirect } from "react-router-dom";
+import { Switch, Link, Route } from "react-router-dom";
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+  container: {
+    display: "flex"
+  }
+})
 
 function App() {
   return (
     <div className="App">
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6">
-            Personal Trainer
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <CustomerList />
+      <Router>
+      <ul>
+        <li>
+          <Link to="/Customer">
+            Customer
+          </Link>          
+        </li>
+        <li>
+          <Link to="/Training">
+            Training
+          </Link>
+        </li>
+        <li>
+          <Link to="/Calendar">
+            Calendar
+          </Link>
+        </li>
+      </ul>
+      <Switch>
+      <Route component={CustomerList} exact path="/Customer"> 
+        </Route>
+      <Route component={TrainingList} exact path="/Training">
+        </Route> 
+      </Switch>    
+      </Router>     
+      
     </div>
   );
 }

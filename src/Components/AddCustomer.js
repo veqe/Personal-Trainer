@@ -36,9 +36,9 @@ function AddCustomer(props) {
     }
 
     return(
-        <div>
+        <div>            
             <Button style={{ margin: 10 }} variant="outlined" color="primary" onClick={handleClickOpen}>
-                Add Customer
+                Add New Customer
             </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>New Customer</DialogTitle>
