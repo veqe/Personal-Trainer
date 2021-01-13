@@ -59,9 +59,9 @@ function TrainingList() {
 
     const columns = [
         {  
-            headerName: '',
+            headerName: 'Actions',
             field: 'links.href',
-            width: 90,
+            width: 120,
             cellRendererFramework: params =>
             <IconButton color="secondary" onClick={() => deleteTraining(params)}>
                 <DeleteIcon fontSize="small" />

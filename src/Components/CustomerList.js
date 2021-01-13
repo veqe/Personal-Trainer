@@ -71,9 +71,9 @@ function CustomerList() {
 
     const columns = [
         {
-            headerName: '',
+            headerName: 'Actions',
             field: 'links.href',
-            width: 90,
+            width: 120,
             cellRendererFramework: params => <EditCustomer updateCustomer={updateCustomer} params={params} />
         },
         {  
