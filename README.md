@@ -10,4 +10,5 @@ TodoList:
 styles so navBar/Drawer dont overlay on top of other things.
 
 Training customer link changed to Training customer firstname + lastname.
+
 Calendar not started.
