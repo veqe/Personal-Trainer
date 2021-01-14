@@ -94,8 +94,10 @@ function CustomerList() {
         {field: 'city', sortable: true, filter: true}
     ]
 
-    return(        
-        <div>                  
+    return(               
+        <div> 
+            <div style={{ height: 80, width: '90%', margin: 'auto' }}>
+                </div>                 
             <AddCustomer addCustomer={addCustomer} />                
             <div className="ag-theme-material" style={{ height: 600, width: '90%', margin: 'auto' }}>
             <AgGridReact

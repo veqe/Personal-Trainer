@@ -6,8 +6,8 @@ import{
     List,
     ListItemIcon,
     ListItemText,
-    Typography,
-    Divider
+    Divider,
+    Typography
 } from "@material-ui/core";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -20,20 +20,14 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import CustomerList from './CustomerList';
-import TrainingList from './TrainingList';
 import { BrowserRouter as Router } from "react-router-dom";
-import { Switch, Link, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
     drawer: {
-        width: '190px'
-    },
-    drawerPaper: {
-        width: 'inherit'
+        width: '240px'
     }
-}));
+});
 
 const Drawer = props => {    
     const { history } = props;
@@ -48,29 +42,24 @@ const Drawer = props => {
     const handleDrawerClose = () => {
         setOpen(false);
     } 
-
-    const NavClick = () => {
-        
-    }
-
     const NavList = [
         {
-            text: "Customers",
+            text: "Customer",
             icon: <AccountBoxIcon />,
-            path: "/Customer"            
+            onClick: () => history.push("/Components/CustomerList")            
          },
          {
-             text: "Trainings",
+             text: "Training",
              icon: <DirectionsRunIcon />,
-             path: "/Training"
+             onClick: () => history.push("/Components/TrainingList")
          },
          {
              text: "Calendar",
              icon: <CalendarTodayIcon />,
-             path: "/Calendar"
+             onClick: () => history.push("/Components/Calendar")
          }
         ];
-    return (       
+    return (
         <Router> 
         <div className={classes.root}>
             <CssBaseline />
@@ -107,20 +96,18 @@ const Drawer = props => {
             <Divider />
             <List>
                 {NavList.map((item, index) => {
-                    const {text, icon, path } = item;
-                    return (     
-                        <Link to={path}>
-                        <ListItem button onClick={NavClick} key={text} >
-                            { icon && <ListItemIcon>{icon}</ListItemIcon>}
+                    const {text, icon, onClick } = item;
+                    return (
+                        <ListItem button key={text} onClick={onClick}>
+                            {icon && <ListItemIcon>{icon}</ListItemIcon>}
                             <ListItemText primary={text} />
-                        </ListItem>
-                        </Link>
+                        </ListItem>  
                     );                    
                 })}
             </List>
-        </VeqeDrawer> 
+        </VeqeDrawer>     
         </div>
-        </Router>
+        </Router>    
     );
 };
 
