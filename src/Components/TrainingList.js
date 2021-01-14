@@ -5,14 +5,20 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Snackbar from '@material-ui/core/Snackbar';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
+import { TextField } from '@material-ui/core';
 
 function TrainingList() {
     const [Trainings, setTrainings] = useState([]);
     const [open, setOpen] = useState(false);
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         getTrainings();
     }, [])
+
+    const etsi = (event) => {
+        setSearch(event.target.value);
+    }
 
     const handleOpen = () => {
         setOpen(true);
@@ -62,8 +68,11 @@ function TrainingList() {
         <div>   
             <div style={{ height: 80, width: '90%', margin: 'auto' }}>
                 </div>    
+                <TextField placeholder={"search"} type="text" onInput={etsi}> 
+                </TextField>
             <div className="ag-theme-material" style={{ height: 600, width: '90%', margin: 'auto' }}>
             <AgGridReact
+                quickFilterText={search}
                 rowData={Trainings}
                 columnDefs={columns}
                 pagination="true"
