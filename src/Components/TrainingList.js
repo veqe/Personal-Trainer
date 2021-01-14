@@ -3,13 +3,8 @@ import { AgGridReact } from 'ag-grid-react';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Snackbar from '@material-ui/core/Snackbar';
-
-import AddCustomer from './AddCustomer';
-import EditCustomer from './EditCustomer';
-
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
-import { Button } from '@material-ui/core';
 
 function TrainingList() {
     const [Trainings, setTrainings] = useState([]);
@@ -45,18 +40,6 @@ function TrainingList() {
         }
     }
 
-    const updateTraining = (link, training) => {
-        fetch(link, {
-            method: 'PUT',
-            headers: {
-                'Content-type' : 'application/json'
-            },
-            body: JSON.stringify(training)
-        })
-        .then(response => getTrainings())
-        .catch(err => console.error(err))
-    }
-
     const columns = [
         {  
             headerName: 'Actions',
@@ -70,7 +53,9 @@ function TrainingList() {
         {field: 'activity', sortable: true, filter: true},
         {field: 'date', sortable: true, filter: true},        
         {field: 'duration', sortable: true, filter: true},
-        {field: 'customer', sortable: true, filter: true}
+        {
+            headerName: 'Customer', field: 'links.2.href', sortable: true, filter: true, width: 600
+        }
     ]
 
     return(        

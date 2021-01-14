@@ -3,18 +3,9 @@ import CustomerList from './Components/CustomerList';
 import TrainingList from './Components/TrainingList';
 import Calendar from './Components/Calendar';
 import Drawer from './Components/Drawer';
-import { makeStyles } from '@material-ui/core/styles';
-import { Switch, Link, Route } from "react-router-dom";
-
-
-const useStyles = makeStyles({
-  container: {
-    display: "flex"
-  }
-})
+import { Switch, Route } from "react-router-dom";
 
 function App() {
-  const classes = useStyles();
   return (
     <div className="App">    
     <Drawer />        
